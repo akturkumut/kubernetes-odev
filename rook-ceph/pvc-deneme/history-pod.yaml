@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: interactive-history-pod
+  namespace: rook-ceph
+spec:
+  containers:
+  - name: ubuntu-container
+    image: ubuntu:22.04
+    command: ["/bin/bash", "-c"]
+    args:
+      - |
+        # History dosyasını PVC'ye yönlendir
+        export HISTFILE=/mnt/test/history.txt
+        export PROMPT_COMMAND='history -a'
+        # Sürekli shell çalıştır
+        exec bash
+    tty: true
+    stdin: true
+    volumeMounts:
+    - name: test-volume
+      mountPath: /mnt/test
+  volumes:
+  - name: test-volume
+    persistentVolumeClaim:
+      claimName: test-pvc
+

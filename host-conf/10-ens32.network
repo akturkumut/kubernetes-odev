@@ -1,0 +1,6 @@
+[Match]
+Name=ens32
+
+[Network]
+DHCP=yes
+

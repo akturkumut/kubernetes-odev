@@ -1,0 +1,16 @@
+replicas: 1
+
+volumeClaimTemplate:
+  accessModes: [ "ReadWriteOnce" ]
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: rook-ceph-block   # Buraya StorageClass adını yazdık
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "512Mi"
+  limits:
+    cpu: "1"
+    memory: "1Gi"
