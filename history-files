@@ -1,0 +1,806 @@
+Master 1
+1  git clone --single-branch --branch master https://github.com/rook/rook.git
+
+2  cd rook/deploy/examples
+
+3  ls
+
+4  cd ..
+
+5  cd ..
+
+6  cd ..
+
+7  cp rook/deploy/examples/cluster.yaml ~/
+
+8  ls
+
+9  sudo nano cluster.yaml
+
+10 kubectl get nodes
+
+11 kubecl get pods -A
+
+12 kubecl get pods -n -A
+
+13 kubecl get pods
+
+14 kubecl -A get pods
+
+15 kubecl get pods --A
+
+16 kubecl get pods --all-namespaces
+
+17 kubectl get pods -A
+
+18 kubectl get pods -A -o wide
+
+19 cd rook
+
+20 cd examples
+
+21 cd deploy
+
+22 cd examples
+
+23 ls
+
+24 kubectl apply -f crds.yaml
+
+25 kubectl apply -f common.yaml
+
+26 kubectl apply -f operator.yaml
+
+27 kubectl apply -f toolbox.yaml
+
+28 cd ..
+
+29 cd ..
+
+30 cd ..
+
+31 kubectl get pods -A -o wide
+
+32 kubectl get pods -A -o wide
+
+33 kubectl get pods -A -o wide
+
+34 kubectl get pods -A -o wide
+
+35 kubectk logs -n rook-ceph rook-ceph-tools-7b75b967db-xsvr4
+
+36 kubectl logs -n rook-ceph rook-ceph-tools-7b75b967db-xsvr4
+
+37 kubectl get pods -A -o wide
+
+38 kubectk describe -n rook-ceph rook-ceph-tools-7b75b967db-xsvr4
+
+39 kubectl describe -n rook-ceph rook-ceph-tools-7b75b967db-xsvr4
+
+40 kubectl get pods -A -o wide
+
+41 kubectl apply -f cluster.yaml
+
+42 kubectl get pods -A -o wide
+
+43 kubectl get pods -A -o wide
+
+44 kubectl get pods -A -o wide
+
+45 kubectl get pods -A -o wide
+
+46 kubectl get pods -A -o wide
+
+47 sudo systemctl status containerd
+
+48 kubectl get pods -A -o wide
+
+49 ssh node1@192.168.19.131
+
+50 kubectl get pods -A -o wide
+
+51 kubectl decribe pod csi-cephfsplugin-7jdtx -n rook-ceph
+
+52 kubectl describe pod csi-cephfsplugin-7jdtx -n rook-ceph
+
+53 kubectl get pods -A -o wide
+
+54 kubectl describe pod rook-ceph-tools-7b75b967db-xsvr4 -n rook-ceph
+
+55 kubectl get pods -A -o wide
+
+56 kubectl -n rook-ceph delete pod -l app=rook-ceph-operator
+
+57 kubectl get pods -A -o wide
+
+58 kubectl get pods -A -o wide
+
+59 kubectl describe pod rook-ceph-mon-b-canary-764b466c6f-blfhz -n rook-ceph
+
+60 kubectl get pods -A -o wide
+
+61 kubectl get pods -A -o wide
+
+62 kubectl get pods -A -o wide
+
+63 kubectl get pods -A -o wide
+
+64 kubectl get pods -A -o wide
+
+65 kubectl -n rook-ceph exec deploy/rook-ceph-tools -- ceph status
+
+66 sudo useradd -m master2
+
+67 master123
+
+68 sudo passwd master2
+
+69 sudo mkdir -p /etc/kubernetes/pki/master2
+
+70 cd /etc/kubernetes/pki/master2
+
+71 openssl genrsa -out master2.key 2048
+
+72 sudo openssl genrsa -out master2.key 2048
+
+73 sudo openssl req -new -key master2.key -out master2.csr -subj "/CN=master2/O=developers"
+
+74 sudo openssl x509 -req -in master2.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out master2.crt -days 365
+
+75 kubectl config set-cluster kubernetes --server=https://10.10.0.11:6443 --certificate-authority=/etc/kubernetes/pki/ca.crt --embed-certs=true --kubeconfig=master2.kubeconfig
+
+76 sudo kubectl config set-cluster kubernetes --server=https://10.10.0.11:6443 --certificate-authority=/etc/kubernetes/pki/ca.crt --embed-certs=true --kubeconfig=/master2.kubeconfig
+
+77 kubectl get pods -A -o wide
+
+78 kubectl get pods -A -o wide
+
+79 sudo kubectl config set-credentials master2 --client-certificate=/etc/kubernetes/pki/master2/master2.crt --client-key=/etc/kubernetes/pki/master2/master2.key --embed-certs=true --kubeconfig=master2.kubeconfig
+
+80 sudo kubectl config set-context master2-context --cluster=kubernetes --user=master2 --kubeconfig=master2.kubeconfig
+
+81 kubectl config use-context master2-context --kubeconfig=master2.kubeconfig
+
+82 sudo kubectl config use-context master2-context --kubeconfig=master2.kubeconfig
+
+83 ls
+
+84 sudo mkdir -p /home/master2/.kube
+
+85 sudo cp master2.kubeconfig /home/master2/.kube/config
+
+86 sudo chown -R master2:master2 /home/master2/.kube
+
+87 sudo su - master2
+
+88 kubectl config set-cluster kubernetes --server=https://10.10.0.11:6443 --certificate-authority=/etc/kubernetes/pki/ca.crt --embed-certs=true --kubeconfig=/home/master2/.kube/config
+
+89 sudo kubectl config set-cluster kubernetes --server=https://10.10.0.11:6443 --certificate-authority=/etc/kubernetes/pki/ca.crt --embed-certs=true --kubeconfig=/home/master2/.kube/config
+
+90 sudo kubectl config set-context master2-context --cluster=kubernetes --user=master2 --kubeconfig=/home/master2/.kube/config
+
+91 kubectl config use-context master2-context --kubeconfig=/home/master2/.kube/config
+
+92 sudo kubectl config use-context master2-context --kubeconfig=/home/master2/.kube/config
+
+93 sudo su - master2
+
+94 sudo nano master2-rook-role.yaml
+
+95 sudo nano master2-rook-rolebinding.yaml
+
+96 kubectl apply -f master2-rook-role.yaml
+
+97 kubectl apply -f master2-rook-rolebinding.yaml
+
+98 sudo su - master2
+
+99 history
+
+100 kubectl get pods -A
+
+101 kubectl get pods -A
+
+  102  cd ..
+
+  103  cd ..
+
+  104  cd ..
+
+  105  cd ..
+
+  106  cd ~
+
+  107  mkdir pvc
+
+  108  cd pvc
+
+  109  sudo nano test-pvc.yaml
+
+  110  kubectl apply -f test-pvc.yaml
+
+  111  kubectl get pvc -n rook-ceph
+
+  112  kubectl get sc
+
+  113  kubectl get pvc -n rook-ceph
+
+  114  cd ..
+
+  115  cd rook
+
+  116  cd deploy
+
+  117  cd examples
+
+  118  ls
+
+  119  cd csi
+
+  120  ls
+
+  121  cd rbd
+
+  122  ls
+
+  123  kubectl apply -f storageclass.yaml
+
+  124  kubectl get sc
+
+  125  kubectl get pvc -n rook-ceph
+
+  126  cd ..
+
+  127  cd ..
+
+  128  cd ..
+
+  129  cd ..
+
+  130  cd ..
+
+  131  cd pvc
+
+  132  sudo nano test-pod.yaml
+
+  133  kubectl apply -f test-pod.yaml
+
+  134  kubectl get pods -n rook-ceph
+
+  135  kubectl get pods -n rook-ceph
+
+  136  kubectl exec -it test-pod -n rook-ceph -- sh
+
+  137  sudo nano history-pod.yaml
+
+  138  sudo nano history-pod.yaml
+
+  139  kubectl delete -f test-pod.yaml
+
+  140  kubectl get pods -n rook-ceph
+
+  141  kubectl get pods -n rook-ceph
+
+  142  kubectl get pods -n rook-ceph
+
+  143  kubectl logs -n rook-ceph test-pod
+
+  144  kubectl logs -n rook-ceph test-pod
+
+  145  kubectl get pods -n rook-ceph
+
+  146  kubectl apply -f history-pod.yaml
+
+  147  kubectl get pods -n rook-ceph
+
+  148  kubectl exec -it history-test -n rook-ceph -- sh
+
+  149  kubectl delete -f history-test.yaml
+
+  150  ls
+
+  151  kubectl delete -f history-pod.yaml
+
+  152  kubectl get pods -n rook-ceph
+
+  153  kubectl get pods -n rook-ceph
+
+  154  kubectl apply -f history-pod.yaml
+
+  155  kubectl get pods -n rook-ceph
+
+  156  kubectl get pods -n rook-ceph
+
+  157  kubectl exec -it history-test -n rook-ceph -- sh
+
+  158  kubectl delete -f history-pod.yaml
+
+  159  ls
+
+  160  sudo nano history-pod.yaml
+
+  161  kubectl apply -f history-pod.yaml
+
+  162  kubectl get pods -n rook-ceph
+
+  163  kubectl get pods -n rook-ceph
+
+  164  kubectl get pods -n rook-ceph
+
+  165  kubectl exec -it history-test -n rook-ceph -- sh
+
+  166  kubectl delete -f history-pod.yaml
+
+  167  kubectl get pods -n rook-ceph
+
+  168  kubectl get pods -n rook-ceph
+
+  169  kubectl exec -it history-test -n rook-ceph -- sh
+
+  170  kubectl apply -f history-pod.yaml
+
+  171  kubectl get pods -n rook-ceph
+
+  172  kubectl exec -it history-test -n rook-ceph -- sh
+
+  173  kubectl delete -f history-pod.yaml
+
+  174  sudo nano history-pod.yaml
+
+  175  kubectl apply -f history-pod.yaml
+
+  176  kubectl get pods -n rook-ceph
+
+  177  kubectl exec -it history-test -n rook-ceph -- sh
+
+  178  kubectl exec -it history-test -n rook-ceph -- sh
+
+  179  kubectl exec -it history-test -n rook-ceph -- sh
+
+  180  kubectl delete -f history-pod.yaml
+
+  181  sudo nano history-pod.yaml
+
+  182  kubectl apply -f history-pod.yaml
+
+  183  kubectl get pods -n rook-ceph
+
+  184  kubectl exec -it history-test -n rook-ceph -- sh
+
+  185  kubectl delete -f history-pod.yaml
+
+  186  sudo nano history-pod.yaml
+
+  187  rm history-pod.yaml
+
+  188  sudo history-pod.yaml
+
+  189  sudo nano history-pod.yaml
+
+  190  kubectl apply -f history-pod.yaml
+
+  191  kubectl get pods -n rook-ceph
+
+  192  kubectl delete -f history-pod.yaml
+
+  193  sudo nano history-pod.yaml
+
+  194  kubectl apply -f history-pod.yaml
+
+  195  kubectl get pods -n rook-ceph
+
+  196  kubectl delete -f history-pod.yaml
+
+  197  sudo nano history-pod.yaml
+
+  198  kubectl apply -f history-pod.yaml
+
+  199  kubectl get pods -n rook-ceph
+
+  200  kubectl get pods -n rook-ceph
+
+  201  kubectl get pods -n rook-ceph
+
+  202  kubectl delete -f history-pod.yaml
+
+  203  sudo nano history-pod.yaml
+
+  204  kubectl apply -f history-pod.yaml
+
+  205  kubectl get pods -n rook-ceph
+
+  206  kubectl get pods -n rook-ceph
+
+  207  kubectl get pods -n rook-ceph
+
+  208  kubectl get pods -n rook-ceph
+
+  209  kubectl get pods -n rook-ceph
+
+  210  kubectl get pods -n rook-ceph
+
+  211  kubectl get pods -n rook-ceph
+
+  212  kubectl get pods -n rook-ceph
+
+  213  kubectl delete -f history-pod.yaml
+
+  214  sudo nano history-pod.yaml
+
+  215  sudo nano history-pod.yaml
+
+  216  kubectl apply -f history-pod.yaml
+
+  217  kubectl get pods -n rook-ceph
+
+  218  kubectl get pods -n rook-ceph
+
+  219  kubectl get pods -n rook-ceph
+
+  220  kubectl delete -f history-pod.yaml
+
+  221  sudo nano history-pod.yaml
+
+  222  kubectl apply -f history-pod.yaml
+
+  223  kubectl get pods -n rook-ceph
+
+  224  kubectl get pods -n rook-ceph
+
+  225  kubectl exec -it interactive-history-pod -n rook-ceph -- sh
+
+  226  kubectl exec -it interactive-history-pod -n rook-ceph -- sh
+
+  227  kubectl delete -f history-pod.yaml
+
+  228  sudo nano history-pod.yaml
+
+  229  kubectl get nodes
+
+  230  kubectl get pods -A
+
+  231  kubectl get pods -A -o wide
+
+  232  exit
+
+  233  curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+  234  helm version
+
+  235  kubectl --version
+
+  236  kubectl version
+
+  237  helm repo add elastic https://helm.elastic.co
+
+  238  helm repo update
+
+  239  kubectl create namespace elk
+
+  240  helm install elasticsearch elastic/elasticsearch -n elk
+
+  241  helm install kibana elastic/kibana -n elk
+
+  242  kubectl get pods -A
+
+  243  kubectl describe pod elasticsearch-master-0 -n elk
+
+  244  kubectl get nodes
+
+  245  kubectl get storageclass
+
+  246  ls
+
+  247  sudo nano values-elasticsearch.yaml
+
+  248  helm uninstall elasticsearch -n elk
+
+  249  helm install elasticsearch elastic/elasticsearch -n elk -f values-elasticsearch.yaml
+
+  250  kubectl patch storageclass rook-ceph-block -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+
+  251  kubectl get storageclass
+
+  252  kubectl get pvc -n elk
+
+  253  kubectl get pods -A
+
+  254  kubectl get pods -A -o wide
+
+  255  kubectl get pvc -n elk
+
+  256  kubectl get pods -A -o wide
+
+  257  kubectl get pvc -n elk
+
+  258  kubectl describe pvc elasticsearch-master-elasticsearch-master-0 -n elk
+
+  259  kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- ceph status
+
+  260  kubectl get pods -A -o wide
+
+  261  kubectl get pods -A -o wide
+
+  262  kubectl get nodes
+
+  263  kubectl get pods -A -o wide
+
+  264  kubectl get pods -A -o wide
+
+  265  kubectl get pods -A -o wide
+
+  266  kubectl get pods -A -o wide
+
+  267  kubectl get pods -A -o wide
+
+  268  kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- ceph status
+
+  269  kubectl get pods -A -o wide
+
+  270  kubectl get pods -A -o wide
+
+  271  kubectl delete pod -n elk -l app=kibana
+
+  272  kubectl get pods -A -o wide
+
+  273  kubectl delete pod -n elk -l release=pre-install-kibana
+
+  274  kubectl delete pod -n elk pre-install-kibana-kibana-7rlh8
+
+  275  kubectl delete pod -n elk pre-install-kibana-kibana-95fhx
+
+  276  kubectl delete pod -n elk pre-install-kibana-kibana-gnvck
+
+  277  kubectl delete pod -n elk pre-install-kibana-kibana-pfclg
+
+  278  kubectl delete pod -n elk pre-install-kibana-kibana-r9dkc
+
+  279  kubectl delete pod -n elk pre-install-kibana-kibana-vk2nt
+
+  280  kubectl delete pod -n elk pre-install-kibana-kibana-zs726
+
+  281  kubectl get pods -A -o wide
+
+  282  kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- ceph status
+
+  283  kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- ceph osd pool ls
+
+  284  kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- ceph osd pool set replicapool replicated_size 2
+
+  285  kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- ceph osd pool set replicapool size 2kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- ceph osd set-pool-default-property size 2
+
+  286  kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- ceph status
+
+  287  kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- ceph status
+
+  288  kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- ceph status
+
+  289  kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- ceph osd set-pool-default-property size 2
+
+  290  kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- ceph config set global osd_pool_default_size 2
+
+  291  kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- ceph status
+
+  292  kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- ceph status -f json-pretty
+
+  293  kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- ceph status
+
+  294  history
+
+  295  helm install kibana elastic/kibana -n elk
+
+  296  helm uninstall kibana -n elk
+
+  297  kubectl delete configmap kibana-kibana-helm-scripts -n elk
+
+  298  helm uninstall kibana -n elk
+
+  299  helm install kibana elastic/kibana -n elk
+
+  300  kubectl delete serviceaccount pre-install-kibana-kibana -n elk
+
+  301  helm install kibana elastic/kibana -n elk
+
+  302  helm list -n elk
+
+  303  kubectl -n elk delete secret -l name=kibana
+
+  304  helm install kibana elastic/kibana -n elk
+
+  305  helm uninstall kibana -n elk --keep-history
+
+  306  helm uninstall kibana -n elk --no-hooks
+
+  307  helm install kibana elastic/kibana -n elk
+
+  308  kubectl delete configmap kibana-kibana-helm-scripts -n elk
+
+  309  helm install kibana elastic/kibana -n elk
+
+  310  helm uninstall kibana -n elk
+
+  311  helm install kibana elastic/kibana -n elk
+
+  312  helm uninstall kibana -n elk
+
+  313  kubectl delete configmap kibana-kibana-helm-scripts -n elk
+
+  314  helm uninstall kibana -n elk
+
+  315  kubectl get all -l app.kubernetes.io/instance=kibana -n elk
+
+  316  kubectl get configmap,secret,pvc,serviceaccount -l app.kubernetes.io/instance=kibana -n elk
+
+  317  kubectl get all -l app.kubernetes.io/instance=pre-install-kibana -n elk
+
+  318  kubectl get configmap,secret,pvc,serviceaccount -l app.kubernetes.io/instance=pre-install-kibana -n elk
+
+  319  helm install kibana elastic/kibana -n elk
+
+  320  kubectl delete serviceaccount pre-install-kibana-kibana -n elk
+
+  321  kubectl delete role pre-install-kibana-kibana -n elk
+
+  322  kubectl delete rolebinding pre-install-kibana-kibana -n elk
+
+  323  kubectl delete configmap kibana-kibana-helm-scripts -n elk
+
+  324  helm install kibana elastic/kibana -n elk
+
+  325  kubectl get secret -n elk | grep kibana
+
+  326  kubectl delete secret sh.helm.release.v1.kibana.v1 -n elk
+
+  327  helm install kibana elastic/kibana -n elk
+
+  328  kubectl delete job pre-install-kibana-kibana -n elk
+
+  329  kubectl delete pod -l job-name=pre-install-kibana-kibana -n elk
+
+  330  helm install kibana elastic/kibana -n elk
+
+  331  kubectl delete secret -n elk -l name=kibana
+
+  332  kubectl get secret -n elk | grep kibana
+
+  333  kubectl delete secret sh.helm.release.v1.kibana.v1 -n elk
+
+  334  kubectl delete job pre-install-kibana-kibana -n elk
+
+  335  kubectl delete pod -l job-name=pre-install-kibana-kibana -n elk
+
+  336  kubectl delete serviceaccount pre-install-kibana-kibana -n elk
+
+  337  kubectl delete role pre-install-kibana-kibana -n elk
+
+  338  kubectl delete rolebinding pre-install-kibana-kibana -n elk
+
+  339  kubectl delete configmap kibana-kibana-helm-scripts -n elk
+
+  340  helm install kibana elastic/kibana -n elk --replace
+
+  341  kubectl get pods -n elk -w
+
+  342  kubectl port-forward svc/kibana-kibana 5601:5601 -n elk
+
+  343  kubectl get pods -A
+
+  344  helm install filebeat elastic/filebeat -n elk
+
+  345  kubectl get pods -A
+
+  346  kubectl get pods -A
+
+  347  kubectl get pods -A
+
+  348  kubectl port-forward svc/k
+
+node 1
+[node1@node1 ~]$ history
+    1  kubeadm join 10.10.0.11:6443 --token cwk5qo.44ouj4ikqbc9ypt9         --discovery-token-ca-cert-hash sha256:85e31e4512a971c5ab320fa096a71c3f8e568a9106a27de0a551663ceef34112
+    2  sudo kubeadm join 10.10.0.11:6443 --token cwk5qo.44ouj4ikqbc9ypt9         --discovery-token-ca-cert-hash sha256:85e31e4512a971c5ab320fa096a71c3f8e568a9106a27de0a551663ceef34112
+    3  exit
+    4  cat <<EOF | sudo tee -a /etc/ho1ts
+    5  # k8s servers
+    6  10.10.0.11 k8smaster
+    7  10.10.0.11 master1
+    8  10.10.0.101 node1
+    9  10.10.0.102 node2
+   10  EOF
+   11  sudo swapoff -a
+   12  sudo sed -i '/swap/s/^\(.*\)$/#\1/g' /etc/fstab
+   13  exit
+   14  history
+   15  exit
+   16  sudo modprobe br_netfilter
+   17  echo "br_netfilter" | sudo tee /etc/modules-load.d/br_netfilter.conf
+   18  sudo tee /etc/sysctl.d/k8s.conf <<EOF
+   19  net.bridge.bridge-nf-call-ip6tables = 1
+   20  net.bridge.bridge-nf-call-iptables = 1
+   21  EOF
+   22  sudo sysctl --system
+   23  exit
+   24  history
+   25  exit
+   26  cd /etc
+   27  rm ho1ts
+   28  sudo rm ho1ts
+   29  ls
+   30  cat <<EOF | sudo tee -a /etc/hosts
+   31  # k8s servers
+   32  10.10.0.11 k8smaster
+   33  10.10.0.11 master1
+   34  10.10.0.12 master2
+   35  10.10.0.13 master3
+   36  10.10.0.101 node1
+   37  10.10.0.102 node2
+   38  10.10.0.103 node3
+   39  10.10.0.104 node4
+   40  10.10.0.105 node5
+   41  EOF
+   42  exit
+   43  sudo modprobe rbd
+   44   echo "rbd" | sudo tee /etc/modules-load.d/rbd.conf
+   45  lsmod | grep rbd
+   46  exit
+   47  history
+   48  exit
+   49  sudo systemctl status containerd
+   50  exit
+   51  history
+[node1@node1 ~]$
+
+node 2
+
+[node2@node2 ~]$ history
+    1  sudo pacman -Syu
+    2  sudo pacman -S kubeadm kubelet containerd
+    3  sudo systemctl enable --now containerd
+    4  sudo systemctl enable --now kubelet
+    5  sudo systemctl enable --now sshd
+    6  cat <<EOF | sudo tee -a /etc/ho1ts
+    7  # k8s servers
+    8  10.10.0.11 k8smaster
+    9  10.10.0.11 master1
+   10  10.10.0.12 master2
+   11  10.10.0.13 master3
+   12  10.10.0.101 node1
+   13  10.10.0.102 node2
+   14  10.10.0.103 node3
+   15  10.10.0.104 node4
+   16  10.10.0.105 node5
+   17  EOF
+   18  cd /etc
+   19  ls
+   20  sudo rm ho1ts
+   21  ls
+   22  cat <<EOF | sudo tee -a /etc/hosts
+   23  # k8s servers
+   24  10.10.0.11 k8smaster
+   25  10.10.0.11 master1
+   26  10.10.0.12 master2
+   27  10.10.0.13 master3
+   28  10.10.0.101 node1
+   29  10.10.0.102 node2
+   30  10.10.0.103 node3
+   31  10.10.0.104 node4
+   32  10.10.0.105 node5
+   33  EOF
+   34  exit
+   35   sudo swapoff -a
+   36  sudo sed -i '/swap/s/^\(.*\)$/#\1/g' /etc/fstab
+   37  sudo modprobe br_netfilter
+   38  echo "br_netfilter" | sudo tee /etc/modules-load.d/br_netfilter.conf
+   39  sudo tee /etc/sysctl.d/k8s.conf <<EOF
+   40  net.bridge.bridge-nf-call-ip6tables = 1
+   41  net.bridge.bridge-nf-call-iptables = 1
+   42  EOF
+   43  sudo sysctl --system
+   44  sudo kubeadm join 10.10.0.11:6443 --token cwk5qo.44ouj4ikqbc9ypt9         --discovery-token-ca-cert-hash sha256:85e31e4512a971c5ab320fa096a71c3f8e568a9106a27de0a551663ceef34112
+   45  exit
+   46  sudo modprobe rbd
+   47  echo "rbd" | sudo tee /etc/modules-load.d/rbd.conf
+   48  lsmod | grep rbd
+   49  exit
+   50  history
+[node2@node2 ~]$
